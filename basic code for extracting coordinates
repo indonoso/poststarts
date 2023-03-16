@@ -1,0 +1,26 @@
+#the basic code I used to extract coordinates; tested with two databases the small one I showed during the meeting and one as larg as the postcards dataset; worked fine
+
+pip install geopy
+
+from geopy.geocoders import Nominatim
+import pandas as pd
+
+df = pd.read_csv ('provaaaa.csv') #this is the name of the csv file I used to test the code
+
+geolocator = Nominatim(user_agent="provaaaa")
+
+def geocode_location(location):
+    try:
+        return geolocator.geocode(location)
+    except:
+        return None
+        
+#display all column names of DataFrame ; to make sure that I was writing the name of the column correctly for the line below
+print(df.columns.tolist())
+
+df['coordinates'] = df['Tirana, Albania'].apply(geocode_location) #'Tirana, Albania' is replaced with the title of the column
+
+df['latitude'] = df['coordinates'].apply(lambda x: x.latitude if x else None)
+df['longitude'] = df['coordinates'].apply(lambda x: x.longitude if x else None)
+
+df.to_csv('new_file.csv', index=False) #new_file is the new csv file which showed in different columns location, longitude, latitude -- tested with Tableau, looked fine on map
