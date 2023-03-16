@@ -1,4 +1,4 @@
-#the basic code I used to extract coordinates; tested with two databases the small one I showed during the meeting and one as larg as the postcards dataset; worked fine
+#the basic code I used to extract coordinates; tested with two databases the small one I showed during the meeting and one as large as the postcards dataset; worked fine
 
 pip install geopy
 
