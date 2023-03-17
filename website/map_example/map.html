@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="css/style.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+       crossorigin=""/>
+<link rel="stylesheet" href="css/MarkerCluster.css" />
+<link rel="stylesheet" href="css/MarkerCluster.Default.css" />
+
+  <!-- to be put after Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+	 crossorigin=""></script>
+ <script src="js/leaflet.markercluster-src.js"></script>
+</head>
+<body>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <div id="map"></div>
+  <script>
+    var map = L.map('map').setView([50.477, 4.67], 8);
+
+    L.tileLayer('https://tile.openstreetmap.be/osmbe/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>. Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>.'
+    }).addTo(map);
+    var marker = L.marker([51.3402298, 3.2411774]).addTo(map);
+
+    var circle = L.circle([50.508, 4.66], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 500
+    }).addTo(map);
+    circle.bindPopup("Example of a circle.");
+
+    //example for a number of address points; we'd need to check what is the best way to provide the entire list of 30K+ postcards
+    var addressPoints = [
+	[51.08742625, 4.873042073278443, "Zoerle-Parwijs. De kerk - L'église", '<img src="https://kuleuven.limo.libis.be/view/delivery/thumbnail/32KUL_KUL/9992469809201488" width="300" height="192">'],
+	[51.08815535, 4.872114557689526, "Zoerle-Parwijs. Dorpszicht", '<img src="https://kuleuven.limo.libis.be/view/delivery/thumbnail/32KUL_KUL/9992464297101488" width="300" height="192">'],
+	[51.087982350000004, 4.876742131383725, " Zoerle-Parwijs. Pastorij", '<img src="https://kuleuven.limo.libis.be/view/delivery/thumbnail/32KUL_KUL/9992464297001488" width="300" height="192">'],
+    ];
+    var markers = L.markerClusterGroup();
+    
+    for (var i = 0; i < addressPoints.length; i++) {
+	var a = addressPoints[i];
+	var title = a[2];
+	var url = a[3];
+	var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
+	marker.bindPopup(url + ' ' + title,);
+	markers.addLayer(marker);
+    }
+    
+    map.addLayer(markers);
+    </script>
+
+</body>
+</html>
+
