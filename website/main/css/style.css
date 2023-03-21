@@ -22,6 +22,10 @@ html,body {
 }
 
 #map {
-    height: 700px;
+    height: 81vh;
     color: black;
+}
+
+#postcardbox {
+    height: 81vh;
 }

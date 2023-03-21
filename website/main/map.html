@@ -24,6 +24,8 @@
   crossorigin=""></script>
   <script src="js/leaflet.markercluster-src.js"></script>
   <script src="js/Control.FullScreen.js"></script>
+  <script src="js/geojson.min.js"></script>
+  <script src="js/leaflet.ajax.min.js"></script>
 
 </head>
 
@@ -85,8 +87,7 @@
 
     <!-- Hero content: will be in the middle -->
     <div class="hero-body">
-      <div class="container has-text-centered">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+      <div class="container is-fluid has-text-centered">
         <div class="columns">
           <div class="column is-three-fifths"> 
             <div id="map">
@@ -102,15 +103,7 @@
                   maxZoom: 19,
                   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>. Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>.'
                 }).addTo(map);
-                var marker = L.marker([51.3402298, 3.2411774]).addTo(map);
 
-                var circle = L.circle([50.508, 4.66], {
-                  color: 'red',
-                  fillColor: '#f03',
-                  fillOpacity: 0.5,
-                  radius: 500
-                }).addTo(map);
-                circle.bindPopup("Example of a circle.");
 
       //example for a number of address points; we'd need to check what is the best way to provide the entire list of 30K+ postcards
                 var addressPoints = [
@@ -119,25 +112,77 @@
                   [51.087982350000004, 4.876742131383725, " Zoerle-Parwijs. Pastorij", '<img src="https://kuleuven.limo.libis.be/view/delivery/thumbnail/32KUL_KUL/9992464297001488" width="300" height="192">'],
                   ];
                 var markers = L.markerClusterGroup();
+                var barLayer = new L.GeoJSON.AJAX("https://www.ccl.kuleuven.be/varia/hackathon/main/data_all.json", {
+      pointToLayer: function(feature, latlng) {
+        
+        return L.marker(latlng)
+    }, 
 
-                for (var i = 0; i < addressPoints.length; i++) {
-                  var a = addressPoints[i];
-                  var title = a[2];
-                  var url = a[3];
-                  var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
-                  marker.bindPopup(url + ' ' + title,);
-                  markers.addLayer(marker);
-                }
+    onEachFeature: function(feature, layer) {
+      layer.on('click', function (e) {
+ 
+              // get coordinates from GeoJSON
+              var coords = e.target.feature.geometry.coordinates
+              //pass coords to function to create marker.(Yellow circle)
+              onMapClick(coords);
+              
+              //place attributes in panel table.
+                var field_image = document.getElementById('postcard_image');
+                field_image.innerHTML = '<img src="' + e.target.feature.properties.url + '">';
+                var field_title = document.getElementById('postcard_title');
+                field_title.innerHTML = e.target.feature.properties.main_title;
+                var field_further = document.getElementById('postcard_further');
+                field_further.innerHTML = e.target.feature.properties.url
+              });
+      layer.bindPopup(feature.properties.main_title);
+    }
+});
+    barLayer.on('data:loaded', function () {
+    markers.addLayer(barLayer);
+    console.log(markers);
+    map.addLayer(markers);
+});
+                // for (var i = 0; i < addressPoints.length; i++) {
+                //   var a = addressPoints[i];
+                //   var title = a[2];
+                //   var url = a[3];
+                //   var marker = L.marker(new L.LatLng(a[0], a[1]), { title: title });
+                //   marker.bindPopup(url + ' ' + title,);
+                //   markers.addLayer(marker);
+                // }
 
-                map.addLayer(markers);
+                // map.addLayer(markers);
+    // click marker
+  var clickmark;
+
+  // When you click on a circle, it calls the onMapClick function and passes the layers coordinates.
+  // I grab the coords which are X,Y, and I need to flip them to latLng for a marker,  
+  function onMapClick(coords) {
+    console.log(coords);
+    var thecoords = coords.toString().split(',');
+    var lat = thecoords[1];
+    var lng = thecoords[0];
+    //if prior marker exists, remove it.
+    if (clickmark != undefined) {
+      map.removeLayer(clickmark);
+    };
+  
+     clickmark = L.circleMarker([lat,lng],{
+      radius: 8,
+      color: "yellow",
+      fillColor:  "yellow",
+      fillOpacity: 0.8}
+     ).addTo(map);
+  }
+// end of code for click marker.
               </script>
             </div>
           </div>
           <div class="column is-two-fifths">
-            <div class="box">
-              <img src="../pictures/FL2787091_3899_DIGI_0020_02036_R_VIEW_MAIN.small.jpg">
-              <p>Title of the postcard</p>
-              <p>Further information</p>
+            <div class="box" id="postcardbox">
+              <div id="postcard_image"><img src="../pictures/FL2787091_3899_DIGI_0020_02036_R_VIEW_MAIN.small.jpg"></div>
+              <p id="postcard_title">Title of the postcard</p>
+              <p id="postcard_further">Further information</p>
             </div>
           </div>
         </div>
@@ -162,5 +207,6 @@
     </div>
   </section>
   <script src="js/bulma.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 </body>
 </html>

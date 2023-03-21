@@ -1,0 +1,31 @@
+{
+	"type": "FeatureCollection",
+
+	"features": [{
+		"type": "Feature",
+	    "properties": {
+		"main_title": "'Belœil. Le parc. Le groupe de Neptune - Het park. De Neptunusgroep [01]'",
+		"ID": "1",
+		"lat": 50.5494354,
+		"long": 3.7264512060049375,
+		"url": "http:\/\/arizona.diamondbacks.mlb.com"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [3.7264512060049375, 50.5494354]
+		}
+	}, {
+		"type": "Feature",
+		"properties": {
+		    "main_title": "Beeringen. Grand'Place. Souvenir des Fêtes de la remise du drapeau aux Anciens Militaires - Beeringen. Groote Plaats. Gedenkenis der Feesten van de Overhandiging des Vaandels aan de Oud Gedienden",
+		    "ID": "2",
+		    "lat": 51.0502026,
+		    "long": 5.220809082300834,
+		    "Website": "http:\/\/atlanta.braves.mlb.com"
+		},
+		"geometry": {
+			"type": "Point",
+			"coordinates": [5.220809082300834, 51.0502026]
+		}
+	}]
+}
