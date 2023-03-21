@@ -1,8 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from text2image_search import Text2ImageSearch, DataBase
-# create a Flask instance
-app = Flask(__name__)
+from flask_cors import CORS
 
+app = Flask(__name__)
+CORS(app)
 
 database = DataBase('metadata.csv', 'vectors.npy')
 search_engine = Text2ImageSearch(database.vectors)
@@ -12,7 +13,7 @@ search_engine = Text2ImageSearch(database.vectors)
 def search():
     query = request.json['query']
     hits = search_engine.search(query, k=10)
-    return database.get_data_for(hits, columns=['title', 'public_url'])
+    return jsonify(database.get_data_for(hits, columns=['title', 'public_url']))
 
 
 if __name__ == "__main__":
