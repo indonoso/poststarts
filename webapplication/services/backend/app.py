@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from text2image_search import Text2ImageSearch, DataBase
 # create a Flask instance
 app = Flask(__name__)
@@ -8,8 +8,9 @@ database = DataBase('metadata.csv', 'vectors.npy')
 search_engine = Text2ImageSearch(database.vectors)
 
 
-@app.route('/search/<query>', methods=['GET'])
-def search(query):
+@app.route('/search', methods=['POST'])
+def search():
+    query = request.json['query']
     hits = search_engine.search(query, k=10)
     return database.get_data_for(hits, columns=['title', 'public_url'])
 
