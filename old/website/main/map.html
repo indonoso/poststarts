@@ -55,7 +55,7 @@
           <div id="navbarMenuHeroA" class="navbar-menu">
             <div class="navbar-end">
               <span class="navbar-item">
-                <a class="button is-white is-outlined has-background-black" href="home.html">
+                <a class="button is-white is-outlined has-background-black" href="index.html">
                   <span class="icon">
                     <i class="fa fa-home"></i>
                   </span>
@@ -136,13 +136,13 @@
               
               //place attributes in panel table.
           var field_image = document.getElementById('postcard_image');
-          field_image.innerHTML = '<img src="' + e.target.feature.properties.thumbnail_url + '">';
+          field_image.innerHTML = '<img src="http://www.ccl.kuleuven.be/varia/hackathon/main/' + e.target.feature.properties.thumbnail_url + '">';
           var field_title = document.getElementById('postcard_title');
           field_title.innerHTML = e.target.feature.properties.main_title;
           var field_further = document.getElementById('postcard_further');
           field_further.innerHTML = '<a href="' + e.target.feature.properties.libis_url + '" class="has-text-link-dark" target="_blank">Consult LIBIS Information</a>'
 	  var field_modal = document.getElementById('postcard-modal');
-	  field_modal.innerHTML = '<img src="' + e.target.feature.properties.thumbnail_url + '">';
+	  field_modal.innerHTML = '<img src="http://www.ccl.kuleuven.be/varia/hackathon/main/' + e.target.feature.properties.thumbnail_url + '">';
               });
       //layer.bindPopup(feature.properties.main_title);
     }
