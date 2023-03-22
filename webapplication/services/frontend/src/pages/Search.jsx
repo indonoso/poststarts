@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, Suspense} from 'react';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form';
 
 function Search() {
-    const url = process.env.REACT_APP_BACKEND_SERVICE_URL
+    const url = 'http://localhost:5004' //process.env.REACT_APP_BACKEND_SERVICE_URL
     const [query, setSearchField] = useState("");
 
     const [postcards, setPostCards] = useState({});
@@ -61,7 +61,12 @@ function Search() {
                     </InputGroup>
                 </Col>
             </Row>
-            <Row>{checkResponse(postcards)}</Row>
+            <Row>
+                <Suspense fallback={<h2>Searching</h2>}>
+                {checkResponse(postcards)}
+                </Suspense>
+                </Row>
+
             </>
     );
 }

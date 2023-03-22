@@ -2,3 +2,4 @@ test.py
 vectors.npy
 metadata.csv
 __pycache__/
+data_all.json

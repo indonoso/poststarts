@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.marker{
+  fill-opacity: 0.8;
+  background-color: yellow;
+}
