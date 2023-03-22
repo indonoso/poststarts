@@ -6,7 +6,7 @@ import Container from "react-bootstrap/Container";
 const Layout = () => {
     return (
         <>
-            <Container>
+            <Container fluid="md">
             <Navigation/>
             <Outlet/>
             </Container>
