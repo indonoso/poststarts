@@ -44,22 +44,31 @@ function Search() {
         );
     }
 
+    function handleKeyDown(e){
+        if (e.key === 'Enter'){
+            getPostcards()
+        }
+    }
     return (
         <>
             <Row>
                 <Col>
+
                     <InputGroup className="mb-3">
                         <Form.Control
-                            value={query} onChange={onInputChange}
+                            value={query} onChange={onInputChange} onKeyDown={handleKeyDown}
                             placeholder=""
                             aria-label="search-input"
                             aria-describedby="basic-addon2"
                         />
-                        <Button variant="outline-secondary" id="button-addon2" onClick={getPostcards}>
+                        <Button variant="outline-secondary" id="button-addon2"
+                                onClick={getPostcards} >
                             Search
                         </Button>
                     </InputGroup>
+
                 </Col>
+
             </Row>
             <Row>
                 <Suspense fallback={<h2>Searching</h2>}>
