@@ -8,8 +8,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
-import ExploratoryDataAnalysis from "./pages/ExploratoryDataAnalysis";
 import NoPage from "./pages/NoPage";
+import GeoSpatialAnalysis from "./pages/GeoSpatialAnalysis";
 
 export default function App() {
   return (
@@ -17,9 +17,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/exploratory_data_analysis" element={<ExploratoryDataAnalysis />} />
+          {/*<Route path="/exploratory_data_analysis" element={<ExploratoryDataAnalysis />} />*/}
+          <Route path="/geo_data" element={<GeoSpatialAnalysis />} />
           <Route path="/search" element={<Search />} />
-          <Route path="*" element={<NoPage />} />
+          {/*<Route path="*" element={<NoPage />} />*/}
         </Route>
       </Routes>
     </BrowserRouter>
