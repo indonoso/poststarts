@@ -22,10 +22,15 @@ html,body {
 }
 
 #map {
-    height: 81vh;
+    height: 77vh;
     color: black;
+    z-index:1;
 }
+
+#modal{ z-index:2; }
 
 #postcardbox {
     height: 81vh;
 }
+
+
