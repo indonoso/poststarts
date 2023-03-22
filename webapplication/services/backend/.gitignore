@@ -1,5 +1,6 @@
 test.py
-vectors.npy
+data/vectors.npy
 metadata.csv
 __pycache__/
 data_all.json
+data/

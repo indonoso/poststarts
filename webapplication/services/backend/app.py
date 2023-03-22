@@ -6,25 +6,21 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-database = DataBase('metadata.csv', 'vectors.npy')
+database = DataBase('data/metadata.csv', 'data/vectors.npy')
 search_engine = Text2ImageSearch(database.vectors)
 
 
 @app.route('/search', methods=['POST'])
 def search():
     query = request.json['query']
-    hits = search_engine.search(query, k=10)
+    hits = search_engine.search(query, k=12)
     return jsonify(database.get_data_for(hits, columns=['title', 'public_url']))
+
 
 @app.route('/geo_data', methods=['GET'])
 def geo_data():
-    with open('data_all.json') as f:
-        data = json.load(f)
-
-    return jsonify([{'title': d['properties']['main_title'],
-                     'position': d['geometry']['coordinates'][::-1],
-                     'public_url': "https://kuleuven.limo.libis.be/view/delivery/thumbnail/32KUL_KUL/" + str(d['properties']['ID'])}
-                    for d in data["features"][:100]])
+    return jsonify(database.metadata[~database.metadata['Lat'].isna() & ~database.metadata['title'].isna()]
+                   [['title', 'Lng', 'Lat', 'public_url']].to_dict(orient='records'))
 
 
 if __name__ == "__main__":

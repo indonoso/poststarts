@@ -25,7 +25,7 @@ function GeoSpatialMap({postcards}) {
     return (<Row>
         <Col md={7}>
       <MapContainer
-        style={{ height: "500px"}}
+        style={{ height: "900px"}}
         center={[50.460, 4.3]}
         zoom={8}
         scrollWheelZoom={true}
@@ -37,9 +37,10 @@ function GeoSpatialMap({postcards}) {
         />
        <MarkerClusterGroup  >
           {postcards.map((postcard, index) => (
+
             <Marker
               key={index}
-              position={postcard.position}
+              position={[postcard.Lat, postcard.Lng]}
                 eventHandlers={{
                     click: (e) => {
                       console.log('marker clicked', e);
