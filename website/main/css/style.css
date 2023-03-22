@@ -29,3 +29,7 @@ html,body {
 #postcardbox {
     height: 81vh;
 }
+
+.tableauPlaceholder {
+    margin: 0 auto;
+}

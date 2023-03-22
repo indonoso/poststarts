@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Postcards</title>
+    <link rel="shortcut icon" href="../images/fav_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <!-- Bulma Version 0.9.0-->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+          crossorigin=""/>
+    <link rel="stylesheet" href="css/MarkerCluster.css"/>
+    <link rel="stylesheet" href="css/MarkerCluster.Default.css"/>
+    <link rel="stylesheet" href="css/Control.FullScreen.css"/>
+    <!-- to be put after Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin=""></script>
+    <script src="js/leaflet.markercluster-src.js"></script>
+    <script src="js/Control.FullScreen.js"></script>
+    <script src="js/geojson.min.js"></script>
+    <script src="js/leaflet.ajax.min.js"></script>
+
+</head>
+
+<body>
+<section class="hero is-primary is-fullheight">
+    <!-- Hero head: will stick at the top -->
+    <div class="hero-head">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item">
+                        <img src="img/kuleuven.png" alt="Logo">
+                    </a>
+                    <span class="navbar-burger" data-target="navbarMenuHeroA">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+                </div>
+                <div id="navbarMenuHeroA" class="navbar-menu">
+                    <div class="navbar-end">
+              <span class="navbar-item">
+                <a class="button is-white is-outlined has-background-black" href="home.html">
+                  <span class="icon">
+                    <i class="fa fa-home"></i>
+                  </span>
+                  <span>Home</span>
+                </a>
+              </span>
+                        <span class="navbar-item">
+                <a class="button is-white has-background-success-dark is-outlined" href="map.html">
+                  <span class="icon">
+                    <i class="fa fa-map"></i>
+                  </span>
+                  <span>Map</span>
+                </a>
+              </span>
+                        <span class="navbar-item">
+                <a class="button is-white has-background-warning-dark is-outlined" href="data.html">
+                  <span class="icon">
+                    <i class="fa fa-chart-bar"></i>
+                  </span>
+                  <span>Data</span>
+                </a>
+              </span>
+                        <span class="navbar-item">
+                <a class="button is-white has-background-danger-dark & is-outlined"
+                   href="https://github.com/BulmaTemplates/bulma-templates/blob/master/templates/landing.html">
+                  <span class="icon">
+                    <i class="fa fa-binoculars"></i>
+                  </span>
+                  <span>Themes</span>
+                </a>
+              </span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+        <div class="container is-fluid has-text-centered">
+            <h2>An overview of the postcard dataset</h2>
+            <div class='tableauPlaceholder' id='viz1679449114009'><noscript><a href='#'><img alt='Overview of postcard collection ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StoryofPostcards&#47;Story1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='StoryofPostcards&#47;Story1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;St&#47;StoryofPostcards&#47;Story1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1679449114009');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1100px';vizElement.style.height='800px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero footer: will stick at the bottom -->
+    <div class="hero-foot">
+        <nav class="tabs">
+            <div class="container is-fluid has-text-centered">
+                <span class="text">This website provides an overview of..</span>
+                <!-- <ul>
+                  <li class="is-active"><a>Overview</a></li>
+                  <li><a>Modifiers</a></li>
+                  <li><a>Grid</a></li>
+                  <li><a>Elements</a></li>
+                  <li><a>Components</a></li>
+                  <li><a>Layout</a></li>
+                </ul>
+              --></div>
+        </nav>
+    </div>
+</section>
+<script src="js/bulma.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</body>
+</html>
