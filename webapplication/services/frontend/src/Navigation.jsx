@@ -22,7 +22,7 @@ function Navigation() {
                                 Exploratory Analysis
                             </NavDropdown.Item>
 
-                            <NavDropdown.Item as={Link} to="/geospatial_data">
+                            <NavDropdown.Item as={Link} to="/geo_data">
                                 Geo Spatial Data
                             </NavDropdown.Item>
 
