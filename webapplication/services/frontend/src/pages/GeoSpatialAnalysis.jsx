@@ -14,7 +14,7 @@ let DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 function fetchGeoData(){
-        return fetch('https://postcards-cm6leuxsda-uc.a.run.app/geo_data',
+        return fetch('https://postcards-cm6leuxsda-ew.a.run.app/geo_data',
             {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}

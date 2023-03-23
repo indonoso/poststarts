@@ -11,6 +11,7 @@ import Search from "./pages/Search";
 import NoPage from "./pages/NoPage";
 import ExploratoryDataAnalysis from "./pages/ExploratoryDataAnalysis";
 import GeoSpatialAnalysis from "./pages/GeoSpatialAnalysis";
+import TourismAnalysis from "./pages/TourismAnalysis";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/exploratory_analysis" element={<ExploratoryDataAnalysis />} />
+          <Route path="/tourism_analysis" element={<TourismAnalysis />} />
           <Route path="/geo_data" element={<GeoSpatialAnalysis />} />
           <Route path="/search" element={<Search />} />
           {/*<Route path="*" element={<NoPage />} />*/}

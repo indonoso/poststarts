@@ -25,6 +25,9 @@ function Navigation() {
                             <NavDropdown.Item as={Link} to="/geo_data">
                                 Geo Spatial Data
                             </NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="/tourism_analysis">
+                                Tourism analysis
+                            </NavDropdown.Item>
 
                         </NavDropdown>
                     </Nav>
