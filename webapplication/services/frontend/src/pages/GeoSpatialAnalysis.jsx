@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import GeoSpatialMap from "../components/GeoSpatialMap";
-
+import L from  'leaflet'
 import 'leaflet/dist/leaflet.css';
 
 
@@ -14,7 +14,7 @@ let DefaultIcon = L.icon({
 
 L.Marker.prototype.options.icon = DefaultIcon;
 function fetchGeoData(){
-        return fetch('http://localhost:5004/geo_data',
+        return fetch('https://postcards-cm6leuxsda-uc.a.run.app/geo_data',
             {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json'}

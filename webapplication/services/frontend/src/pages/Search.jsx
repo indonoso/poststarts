@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Form from 'react-bootstrap/Form';
 
 function Search() {
-    const url = 'http://localhost:5004' //process.env.REACT_APP_BACKEND_SERVICE_URL
+    const url = 'https://postcards-cm6leuxsda-uc.a.run.app'
     const [query, setSearchField] = useState("");
 
     const [postcards, setPostCards] = useState({});
