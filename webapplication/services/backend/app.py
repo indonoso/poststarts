@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 CORS(app)
 
-database = DataBase('data/metadata.csv', 'data/vectors.npy')
+database = DataBase('metadata.csv', 'vectors.npy')
 search_engine = Text2ImageSearch(database.vectors)
 
 
@@ -24,8 +24,4 @@ def geo_data():
 
 
 if __name__ == "__main__":
-    # for debugging locally
-    # app.run(debug=True, host='0.0.0.0',port=5000)
-
-    # for production
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)

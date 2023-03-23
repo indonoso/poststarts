@@ -7,7 +7,7 @@ class Text2ImageSearch:
     def __init__(self, vectors):
         self.vectors_matrix = vectors
 
-        self.sentence_transformer = SentenceTransformer('clip-ViT-B-32-multilingual-v1')
+        self.sentence_transformer = SentenceTransformer('models/clip-ViT-B-32-multilingual-v1')
 
     def search(self, query, k=10):
         # First, we encode the query (which can either be an image or a text string)

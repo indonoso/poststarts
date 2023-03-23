@@ -24,3 +24,4 @@ RUN chmod +x /usr/src/chat-app/entrypoint.sh
 
 # add app
 COPY . .
+CMD exec gunicorn --bind :5000 --workers 1 --threads 8 --timeout 0 app:app
